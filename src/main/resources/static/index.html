@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Library | Library Management</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><div class="logo">CL</div><div><b>Campus Library</b><small>COLLEGE PORTAL</small></div></div>
+  <p class="nav-label">WORKSPACE</p>
+  <button class="nav active" data-view="dashboard">▦ <span>Dashboard</span></button>
+  <button class="nav" data-view="books">▤ <span>Book Catalogue</span></button>
+  <button class="nav" data-view="issue">⇄ <span>Issue / Return</span></button>
+  <div class="side-bottom"><div class="avatar">LB</div><div><b>Library Desk</b><small>College Admin</small></div></div>
+</aside>
+<main class="main">
+<header><div><p class="eyebrow">COLLEGE LIBRARY MANAGEMENT</p><h1 id="pageTitle">Library overview</h1><p class="muted">Manage books, student borrowing and returns in one place.</p></div><div class="today" id="today"></div></header>
+<section id="dashboardView" class="view">
+  <div class="stats">
+    <article class="stat"><span class="stat-icon violet">▤</span><p>Total book titles</p><h2 id="titles">0</h2><small>Unique catalogue entries</small></article>
+    <article class="stat"><span class="stat-icon blue">▣</span><p>Total copies</p><h2 id="copies">0</h2><small>Across all departments</small></article>
+    <article class="stat"><span class="stat-icon green">✓</span><p>Available copies</p><h2 id="available">0</h2><small>Ready to issue</small></article>
+    <article class="stat"><span class="stat-icon orange">⇄</span><p>Currently issued</p><h2 id="issued">0</h2><small>Awaiting return</small></article>
+  </div>
+  <div class="panel"><div class="panel-head"><div><h3>Recently issued books</h3><p class="muted">Latest student borrowing activity</p></div><button class="text-btn" onclick="showView('issue')">View all →</button></div><div class="table-wrap"><table><thead><tr><th>BOOK / STUDENT</th><th>COLLEGE ID</th><th>ISSUED</th><th>DUE DATE</th><th>STATUS</th></tr></thead><tbody id="recentRows"></tbody></table></div></div>
+  <div class="note"><b>📚 Library tip</b><span>Standard borrowing period is 14 days. Please remind students to return books by the due date.</span></div>
+</section>
+<section id="booksView" class="view hidden">
+  <div class="toolbar"><div><h3>Book catalogue</h3><p class="muted">Add, search and manage college library books.</p></div><button class="primary" onclick="openBookForm()">＋ Add new book</button></div>
+  <div class="searchbar"><span>⌕</span><input id="search" placeholder="Search by title, author or department..." oninput="loadBooks()"></div>
+  <div class="panel"><div class="table-wrap"><table><thead><tr><th>BOOK DETAILS</th><th>ISBN</th><th>DEPARTMENT</th><th>AVAILABILITY</th><th>ACTIONS</th></tr></thead><tbody id="bookRows"></tbody></table></div></div>
+</section>
+<section id="issueView" class="view hidden">
+  <div class="toolbar"><div><h3>Issue & return desk</h3><p class="muted">Track books borrowed by students and process returns.</p></div><button class="primary" onclick="openIssueForm()">＋ Issue a book</button></div>
+  <div class="filters"><button class="filter active" data-status="">All records</button><button class="filter" data-status="ISSUED">Currently issued</button><button class="filter" data-status="RETURNED">Returned</button></div>
+  <div class="panel"><div class="table-wrap"><table><thead><tr><th>BOOK</th><th>STUDENT</th><th>COLLEGE ID</th><th>ISSUE DATE</th><th>DUE DATE</th><th>STATUS / ACTION</th></tr></thead><tbody id="recordRows"></tbody></table></div></div>
+</section>
+</main>
+<div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h3 id="modalTitle">Add a book</h3><button class="close" onclick="closeModal()">×</button></div><form id="modalForm"></form></div></div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body></html>
