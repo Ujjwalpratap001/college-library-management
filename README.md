@@ -1,40 +1,75 @@
-# Campus Library — Java + MongoDB
+# College Library Management System – Java, Spring Boot & MongoDB
 
-A college-library management website built with Java 17, Spring Boot, MongoDB, HTML, CSS and JavaScript.
+A web-based **College Library Management System** built as a college project. It helps organize a library catalogue, track book availability, issue books to students, and record returns and borrowing history.
+
+This project is maintained by **Ujjwal Pratap**, a B.Tech Computer Science Engineering student at GLA University, Mathura, Uttar Pradesh, and CEO of AP Creative Studio.
 
 ## Features
-- Dashboard with book-title, copy, availability and issued-book counts
-- Add, edit, search and delete catalogue entries
-- Issue a book to a student using college ID/roll number
-- Automatic 14-day due date
-- Return tracking and borrowing history
+
+- Dashboard showing book titles, copies, availability, and issued-book counts
+- Add, edit, search, and delete catalogue entries
+- Issue a book to a student using a college ID or roll number
+- Automatic 14-day due-date calculation
+- Book return tracking and borrowing history
 - Department field for college-specific organization
-- Responsive layout for desktop and mobile
+- Responsive interface for desktop and mobile screens
+
+## Technology stack
+
+- Java 17
+- Spring Boot
+- MongoDB
+- Maven
+- HTML, CSS, and JavaScript
 
 ## Requirements
+
 - Java 17 or newer
-- Maven 3.6+ (or use IntelliJ IDEA's Maven support)
-- MongoDB Community Server running locally on port 27017
+- Maven 3.6+ (or IntelliJ IDEA Maven support)
+- MongoDB Community Server, running locally on port 27017
 
-## Run on Windows
-1. Install Java 17+ and MongoDB Community Server.
-2. Start MongoDB. The default connection in `src/main/resources/application.properties` is `mongodb://localhost:27017/college_library`.
-3. Open this folder in IntelliJ IDEA as a Maven project.
-4. Wait for Maven dependencies to download.
-5. Run `LibraryApplication.java`, or open a terminal in this folder and run `mvn spring-boot:run`.
-6. Open **http://localhost:8080** in your browser.
+## Run locally
 
-If you use MongoDB Atlas, replace `spring.data.mongodb.uri` in `application.properties` with your Atlas connection string. Do not commit real database passwords to a public repository.
+1. Install Java 17+, Maven, and MongoDB.
+2. Start MongoDB.
+3. Check the connection setting in `src/main/resources/application.properties`. The documented local database URI is:
+
+   ```text
+   mongodb://localhost:27017/college_library
+   ```
+
+4. Open the repository as a Maven project in IntelliJ IDEA, or use a terminal:
+
+   ```bash
+   mvn spring-boot:run
+   ```
+
+5. Open [http://localhost:8080](http://localhost:8080).
+
+For MongoDB Atlas, configure `spring.data.mongodb.uri` with your own connection string. Never commit real passwords or credentials.
 
 ## Main API endpoints
-- `GET /api/dashboard`
-- `GET /api/books` and `GET /api/books?search=java`
-- `POST /api/books`
-- `PUT /api/books/{id}`
-- `DELETE /api/books/{id}`
-- `GET /api/records`
-- `POST /api/issue/{bookId}`
-- `POST /api/return/{recordId}`
 
-## Important project note
-This is a college-project starter version. It does not yet include authentication/role permissions, fine calculation, email reminders, or audit logging. Add authentication and server-side authorization before using it for real student records. Use sample student data for a classroom demo.
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| GET | `/api/dashboard` | Dashboard data |
+| GET | `/api/books` | List books |
+| GET | `/api/books?search=java` | Search books |
+| POST | `/api/books` | Add a book |
+| PUT | `/api/books/{id}` | Update a book |
+| DELETE | `/api/books/{id}` | Delete a book |
+| GET | `/api/records` | Borrowing records |
+| POST | `/api/issue/{bookId}` | Issue a book |
+| POST | `/api/return/{recordId}` | Return a book |
+
+## Security and project status
+
+This is a college-project starter version. It does not currently document authentication or role-based permissions, fine calculation, email reminders, or audit logging. Add authentication and server-side authorization before using real student records. Use sample data for demonstrations.
+
+## About the Developer
+
+**Ujjwal Pratap** is a B.Tech CSE student at GLA University, Mathura, and CEO of AP Creative Studio. His project work focuses on practical software, web applications, and learning through implementation.
+
+- GitHub: [Ujjwalpratap001](https://github.com/Ujjwalpratap001)
+- LinkedIn: [Ujjwal Pratap](https://www.linkedin.com/in/ujjwalpratap624604/)
+- Personal portfolio: [ujjwal-portfolio](https://github.com/Ujjwalpratap001/ujjwal-portfolio)
